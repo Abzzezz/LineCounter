@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb103fea-053c-4839-9579-8ce5e7969597" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_io_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/META-INF/LineCounter.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LineCounter/ga/abzzezz/counter/Counter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ga/abzzezz/counter/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ga/abzzezz/counter/Counter.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +43,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Libraries/commons-io-2.6.jar!/" />
+    <property name="last_opened_file_path" value="E:/Libraries/commons-io-2.6.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -106,7 +122,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
