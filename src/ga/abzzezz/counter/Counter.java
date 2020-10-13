@@ -1,6 +1,5 @@
 package ga.abzzezz.counter;
 
-import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,8 +9,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Counter extends JFrame {
 
@@ -21,14 +24,12 @@ public class Counter extends JFrame {
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Counter frame = new Counter();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                Counter frame = new Counter();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -78,7 +79,7 @@ public class Counter extends JFrame {
         btnScan.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                getFolder(chckbxSubdirectories.isSelected(), chckbxjavaFiles.isSelected(), chckbxTextFiles.isSelected() );
+                getFolder(chckbxSubdirectories.isSelected(), chckbxjavaFiles.isSelected(), chckbxTextFiles.isSelected());
             }
 
             @Override
@@ -107,64 +108,46 @@ public class Counter extends JFrame {
     File input;
 
     public void getFolder(boolean subDirectory, boolean displayLines, boolean emptyLines) {
+        assert input.listFiles() != null : "List file null";
+        final List<File> files = new ArrayList<>();
 
-        /*
-        Set two variables: count for the lines in the current file, linesTotal for the lines in the files * the files
-         */
-        int count = 0;
-        int linesTotal = 0;
-        /*
-        Loop through all the files and check for certain file extensions(text files and .java files)
-         */
-        for (File listFile : FileUtils.listFiles(input, new String[]{"java", "txt"}, subDirectory)) {
-            try {
-                /*
-                Initialise a new BufferedReader to count the lines and sort out empty lines.
-                 */
-                BufferedReader bufferedReader = new BufferedReader(new FileReader(listFile));
-                String line;
-                /*
-                Create a while loop to loop read the file till @line is null
-                 */
-                while ((line = bufferedReader.readLine()) != null) {
-                    /*
-                    If the line is not empty set (int) count + 1
-                     */
-                   if(emptyLines) {
-                       if (!line.isEmpty() && !line.startsWith("/*" ) && !line.startsWith("//") && !line.startsWith("*/")) {
-                           count++;
-                       }
-                   } else {
-                       if(!line.startsWith("/*" ) && !line.startsWith("//") && !line.startsWith("*/")) {
-                           count++;
-                       }
-                   }
+        getSubDirectories(input, files);
+
+        long size = files.stream().filter(file -> {
+            final String[] extensions = new String[]{"java", "txt"};
+            boolean doesExtend = false;
+            for (final String extension : extensions) {
+                if (file.getName().endsWith("." + extension)) {
+                    doesExtend = true;
+                    break;
                 }
-                /*
-                Print the FileName and the lines in file.
-                 */
-                System.out.println("File " + listFile.getName() + " Lines:" + count);
-                /*
-                Close the buffered reader
-                 */
-                bufferedReader.close();
-                /*
-                Add the value of count to linesTotal then reset count to 0 to read the next file.
-                 */
-                linesTotal += count;
-                count = 0;
-                /*
-                If something fails throw an exception and print the reason
-                 */
-            } catch (IOException e) {
+            }
+            return doesExtend;
+        }).map(file -> {
+            try {
+                return new BufferedReader(new FileReader(file)).lines().filter(s -> !s.isEmpty() && !s.startsWith("/")).collect(Collectors.toList());
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
+            return null;
+        }).filter(Objects::nonNull).map(List::size).reduce(Integer::sum).get();
+
         /*
         Print the value of linesTotal in red
          */
-        System.err.println("Lines in all files combine: " + linesTotal);
+        System.err.println("Lines in all files combine: " + size);
 
-        if(displayLines) JOptionPane.showMessageDialog(null, "Lines in all files combine: " + linesTotal);
+        if (displayLines) JOptionPane.showMessageDialog(null, "Lines in all files combine: " + size);
+    }
+
+    private void getSubDirectories(final File file, final List<File> files) {
+        assert input.listFiles() != null : "List file sub dir null";
+        for (final File listFile : file.listFiles()) {
+            if (listFile.isDirectory()) {
+                getSubDirectories(listFile, files);
+            } else {
+                files.add(listFile);
+            }
+        }
     }
 }
